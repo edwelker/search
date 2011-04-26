@@ -17,12 +17,23 @@
             </resources>
         </menu>
     </xsl:template>
-   
-    
-    <xsl:template match="@*|category">
+
+    <xsl:template match='category'>
         <xsl:copy>
-            <xsl:apply-templates select="@*|category"/>
+            <xsl:apply-templates select="@*"/>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="@*">
+        <xsl:element name="{name()}">
+            <xsl:value-of select="."/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="@name">
+        <title>
+            <xsl:value-of select="."/>
+        </title>
     </xsl:template>
     
     
